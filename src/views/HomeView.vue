@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-md-6">
+      <div class="col-md-6 mt-5 mb-5">
         <HeaderView />
         <AddTodo />
         <TodoList />

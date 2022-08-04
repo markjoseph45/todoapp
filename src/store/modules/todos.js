@@ -30,15 +30,24 @@ export default {
         UPDATE_TOPIC(state, payload){
           const topics = state.todoList.topics;
           topics[state.editingIndex] = payload;
-          state.todoList.topics = topics;
+          state.todoList.topics = [...topics];
           state.editingIndex = null;
           state.showModal = false;
         },
 
+        DELETE_TOPIC(state, payload){
+          const arrayIndex = state.todoList.topics.findIndex(item => item.guid == payload);
+          const topics = state.todoList.topics;
+          topics.splice(arrayIndex, 1)
+          state.todoList.topics = [...topics];
+          // console.log(state.todoList.topics)
+        },
+
         SHOW_TOPIC(state, payload){
             state.showModal = true;
-            state.editingIndex = payload;
-            state.topic = Object.assign({}, state.todoList.topics[payload])
+            const arrayIndex = state.todoList.topics.findIndex(item => item.guid == payload);
+            state.editingIndex = arrayIndex;
+            state.topic = Object.assign({}, state.todoList.topics[arrayIndex])
         },
 
         REVERT_TOPIC(state, payload){

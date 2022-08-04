@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5">
+    <div class="">
         <h1 class="text-center">{{ appTitle }}</h1>
     </div>
 </template>

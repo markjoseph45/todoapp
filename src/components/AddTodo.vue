@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$store.state.todo.showModal = false">Close</button>
-        <button type="button" class="btn btn-primary" @click="saveTodo">Submit</button>
+        <button type="button" class="btn btn-primary" @click="saveTodo" :disabled="disabledHandler">Submit</button>
       </div>
     </div>
   </div>
@@ -110,6 +110,9 @@ export default {
         ...mapState(['todo']),
         getModalStatus(){
             return this.$store.state.todo.showModal
+        },
+        disabledHandler(){
+            return (this.todo.topic.name && this.todo.topic.guid) ? false : true;
         }
     },
     watch:{
